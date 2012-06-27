@@ -1,8 +1,12 @@
 try {
   var bindings = require('./build/default/bcrypt_lib');
 } catch(e) {
-  //update for v0.5.5+
-  var bindings = require('./build/Release/bcrypt_lib');
+  try {
+    //update for v0.5.5+
+    var bindings = require('./build/Release/bcrypt_lib');
+  } catch (e2) {
+    var bindings = require('./build/Debug/bcrypt_lib');
+  }
 }
 
 /// generate a salt (sync)
